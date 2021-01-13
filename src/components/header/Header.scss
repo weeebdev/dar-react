@@ -1,2 +1,54 @@
 .Header {
+  background-color: #fff;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+
+  font-size: 0.875rem;
+
+  header {
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Header__logo {
+      height: 90%;
+    }
+
+    .Header__nav {
+      width: 30%;
+
+      .Header__ul {
+        display: flex;
+        justify-content: space-between;
+
+        list-style: none;
+
+        .Header__li {
+          .Header__a {
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            color: #000;
+          }
+        }
+      }
+    }
+
+    .Header__button {
+      width: 120px;
+      height: 30px;
+      font-size: 0.875rem;
+
+      background-color: #980bff;
+      color: #fff;
+      padding: 5px;
+
+      border-radius: 10px;
+      border: none;
+    }
+  }
 }
