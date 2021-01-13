@@ -7,26 +7,26 @@ const Header: React.FC = () => {
   return (
     <div className="Header">
       <header>
-        <img src={logo} alt="Logo image" className="Header__logo" />
+        <img src={logo} alt="logo" className="Header__logo" />
         <nav className="Header__nav">
           <ul className="Header__ul">
             <li className="Header__li">
-              <a href="#" className="Header__a">
+              <a href="/" className="Header__a">
                 О нас
               </a>
             </li>
             <li className="Header__li">
-              <a href="#" className="Header__a">
+              <a href="/" className="Header__a">
                 Обучение
               </a>
             </li>
             <li className="Header__li">
-              <a href="#" className="Header__a">
+              <a href="/" className="Header__a">
                 Сообщество
               </a>
             </li>
             <li className="Header__li">
-              <a href="#" className="Header__a">
+              <a href="/" className="Header__a">
                 Медиа
               </a>
             </li>
