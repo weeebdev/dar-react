@@ -11,22 +11,22 @@ const Header: React.FC = () => {
         <nav className="Header__nav">
           <ul className="Header__ul">
             <li className="Header__li">
-              <a href="" className="Header__a">
+              <a href="#" className="Header__a">
                 О нас
               </a>
             </li>
             <li className="Header__li">
-              <a href="" className="Header__a">
+              <a href="#" className="Header__a">
                 Обучение
               </a>
             </li>
             <li className="Header__li">
-              <a href="" className="Header__a">
+              <a href="#" className="Header__a">
                 Сообщество
               </a>
             </li>
             <li className="Header__li">
-              <a href="" className="Header__a">
+              <a href="#" className="Header__a">
                 Медиа
               </a>
             </li>
