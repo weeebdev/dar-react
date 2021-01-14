@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../assets/images/logo.svg';
+import Button from '../Button/Button';
 
 import styles from './Header.module.scss';
 
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <button className={styles.Header__button}>Войти</button>
+        <Button title={'Войти'} />
       </header>
     </div>
   );
