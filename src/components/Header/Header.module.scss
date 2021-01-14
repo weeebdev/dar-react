@@ -21,21 +21,6 @@
 
     .Header__nav {
       width: 30%;
-
-      .Header__ul {
-        display: flex;
-        justify-content: space-between;
-
-        list-style: none;
-
-        .Header__li {
-          .Header__a {
-            -webkit-text-decoration: none;
-            text-decoration: none;
-            color: #000;
-          }
-        }
-      }
     }
 
     .Header__button {

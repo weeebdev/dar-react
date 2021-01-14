@@ -3,6 +3,9 @@ import logo from '../../assets/images/logo.svg';
 import Button from '../Button/Button';
 
 import styles from './Header.module.scss';
+import HeaderItems from './HeaderItems/HeaderItems';
+
+const items = ['О нас', 'Обучение', 'Сообщество', 'Медиа'];
 
 const Header: React.FC = () => {
   return (
@@ -10,28 +13,7 @@ const Header: React.FC = () => {
       <header>
         <img src={logo} alt="logo" className={styles.Header__logo} />
         <nav className={styles.Header__nav}>
-          <ul className={styles.Header__ul}>
-            <li className={styles.Header__li}>
-              <a href="/" className={styles.Header__a}>
-                О нас
-              </a>
-            </li>
-            <li className={styles.Header__li}>
-              <a href="/" className={styles.Header__a}>
-                Обучение
-              </a>
-            </li>
-            <li className={styles.Header__li}>
-              <a href="/" className={styles.Header__a}>
-                Сообщество
-              </a>
-            </li>
-            <li className={styles.Header__li}>
-              <a href="/" className={styles.Header__a}>
-                Медиа
-              </a>
-            </li>
-          </ul>
+          <HeaderItems items={items} />
         </nav>
         <Button title={'Войти'} />
       </header>
