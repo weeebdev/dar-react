@@ -11,14 +11,14 @@ const StyledHeaderItems = styled.ul`
 `;
 
 type Props = {
-  items: CategoryType[];
+  items: string[];
 };
 
 const HeaderItems: React.FC<Props> = ({ items }) => {
   return (
     <StyledHeaderItems>
       {items.map((item, index) => (
-        <HeaderItem item={item.title} key={index} />
+        <HeaderItem item={item} key={index} />
       ))}
     </StyledHeaderItems>
   );
