@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/images/logo.svg';
+import getCategories from '../../shared/api';
+import { Category } from '../../shared/types';
 import Button from '../Button/Button';
 
 import styles from './Header.module.scss';
 import HeaderItems from './HeaderItems/HeaderItems';
 
-const items = ['О нас', 'Обучение', 'Сообщество', 'Медиа'];
+// const items = ['О нас', 'Обучение', 'Сообщество', 'Медиа'];
 
 const Header: React.FC = () => {
+  const [items, setItems] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getCategories();
+      console.log(res.data);
+      setItems(res.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className={styles.Header}>
       <header>

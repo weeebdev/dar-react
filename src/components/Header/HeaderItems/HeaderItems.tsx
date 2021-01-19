@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Category } from '../../../shared/types';
 import HeaderItem from './HeaderItem/HeaderItem';
 
 const StyledHeaderItems = styled.ul`
@@ -10,14 +11,14 @@ const StyledHeaderItems = styled.ul`
 `;
 
 type Props = {
-  items: string[];
+  items: Category[];
 };
 
-const HeaderItems: React.FC<Props> = ({items}) => {
+const HeaderItems: React.FC<Props> = ({ items }) => {
   return (
     <StyledHeaderItems>
       {items.map((item, index) => (
-        <HeaderItem item={item} key={index} />
+        <HeaderItem item={item.title} key={index} />
       ))}
     </StyledHeaderItems>
   );
