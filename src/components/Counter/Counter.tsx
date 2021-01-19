@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Emoji from 'a11y-react-emoji';
 import EmojiButton from './EmojiButton/EmojiButton';
+import { checkLikes } from '../../shared/utils';
 
 const StyledCounter = styled.div`
   width: 50vw;
@@ -38,6 +39,12 @@ const StyledHeartCounter = styled.p`
 
 const Counter: React.FC = () => {
   const [likes, setLikes] = useState(0);
+
+  useEffect(() => {
+    checkLikes(likes)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  }, [likes]);
 
   const putLike = () => {
     setLikes(likes + 1);
