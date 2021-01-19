@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../assets/images/logo.svg';
 import { getCategories } from '../../shared/api';
 import { CategoryType } from '../../shared/types';
 

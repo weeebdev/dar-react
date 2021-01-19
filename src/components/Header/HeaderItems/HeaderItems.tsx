@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CategoryType } from '../../../shared/types';
 import HeaderItem from './HeaderItem/HeaderItem';
 
 const StyledHeaderItems = styled.ul`
