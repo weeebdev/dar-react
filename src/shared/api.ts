@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const getCategories = () => {
-  return axios.get('https://media-api.dar-dev.zone/api/categories');
+const API = 'https://media-api.dar-dev.zone/api';
+
+export const getCategories = () => {
+  return axios.get(`${API}/categories`);
 };
 
-export default getCategories;
+export const getArticles = () => {
+  return axios.get(`${API}/articles?limit=10&sort=id:DESC`);
+};

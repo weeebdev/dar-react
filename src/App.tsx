@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.scss';
-import Counter from './components/Counter/Counter';
+import ArticleList from './components/ArticleList/ArticleList';
 
 import Header from './components/Header/Header';
 import MainNav from './components/MainNav/MainNav';
@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <div className="App">
       <Header />
       <MainNav />
-      <Counter />
+      <ArticleList />
     </div>
   );
 };
