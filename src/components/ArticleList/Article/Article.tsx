@@ -22,6 +22,7 @@ const StyledArticleDescription = styled.div`
 const StyledArticleImage = styled.img`
   width: 30%;
   height: 100%;
+  object-fit: cover;
 
   border-radius: 15px;
 `;
@@ -42,7 +43,7 @@ const StyledArticleDate = styled.p`
   font-size: 13px;
 `;
 
-const Article: React.FC<ArticleType> = ({ title, annotation, created_at }) => {
+const Article: React.FC<ArticleType> = ({ title, annotation, created_at, image }) => {
   const date = new Date(created_at);
 
   return (
@@ -53,7 +54,7 @@ const Article: React.FC<ArticleType> = ({ title, annotation, created_at }) => {
 
         <StyledArticleDate>{`${date.getDay()} ${date.toLocaleString('default', { month: 'long' })}`}</StyledArticleDate>
       </StyledArticleDescription>
-      <StyledArticleImage src={'https://picsum.photos/1000'} />
+      <StyledArticleImage src={`https://dev-darmedia-uploads.s3.eu-west-1.amazonaws.com/${image}`} />
     </StyledArticle>
   );
 };
