@@ -1,10 +1,10 @@
-export interface CategoryType {
+export interface ICategory {
   id: string;
   title: string;
   sort: number;
 }
 
-export interface ArticleType {
+export interface IArticle {
   id: string;
   title: string;
   updated_at: string;
@@ -12,6 +12,7 @@ export interface ArticleType {
   author_id: string;
   category_id: string;
   annotation: string;
+  description: string;
   slug: string;
   image: string;
   visited: number;
@@ -19,12 +20,12 @@ export interface ArticleType {
   is_leader: boolean;
   editors_choice: boolean;
   locale: string;
-  tags: TagType[];
-  category: CategoryType;
-  author: AuthorType;
+  tags: ITag[];
+  category: ICategory;
+  author: IAuthor;
 }
 
-export interface TagType {
+export interface ITag {
   id: string;
   name: string;
   locale: string;
@@ -33,7 +34,7 @@ export interface TagType {
   updated_at: string;
 }
 
-export interface AuthorType {
+export interface IAuthor {
   id: string;
   name: string;
   description: string | null;

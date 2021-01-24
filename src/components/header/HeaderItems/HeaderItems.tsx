@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderItem from './HeaderItem/HeaderItem';
+import HeaderItem from '../header-items/header-item/HeaderItem';
 
 const StyledHeaderItems = styled.ul`
   width: 100%;

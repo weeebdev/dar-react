@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from '../../assets/images/logo.svg';
-import Button from '../Button/Button';
+import Button from '../button/Button';
 
 import styles from './Header.module.scss';
-import HeaderItems from './HeaderItems/HeaderItems';
+import HeaderItems from './header-items/HeaderItems';
 
-const items = ['О нас', 'Обучение', 'Сообщество', 'Медиа'];
+const items = [''];
 
 const Header: React.FC = () => {
   return (

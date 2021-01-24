@@ -1,0 +1,21 @@
+.formControl {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: gray;
+    margin-bottom: 5px;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    border: 1px solid gray;
+    margin-right: 1rem;
+    outline: none;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 200px;
+  }
+}

@@ -2,11 +2,13 @@ import React from 'react';
 
 import './App.scss';
 import 'antd/dist/antd.css';
-import ArticleList from './components/ArticleList/ArticleList';
 
-import Header from './components/Header/Header';
-import MainNav from './components/MainNav/MainNav';
-import Wrapper from './components/Wrapper/Wrapper';
+import Header from './components/header/Header';
+import MainNav from './components/main-nav/MainNav';
+import Wrapper from './components/wrapper/Wrapper';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import ArticlesPage from './pages/articles/ArticlesPage';
+import ArticlePage from './pages/article/ArticlePage';
 
 const App: React.FC = () => {
   return (
@@ -14,7 +16,12 @@ const App: React.FC = () => {
       <Header />
       <MainNav />
       <Wrapper>
-        <ArticleList />
+        <Switch>
+          <Redirect exact path="/" to="/articles" />
+          <Route exact path="/articles" component={ArticlesPage} />
+          <Route path="/articles/:categoryId" component={ArticlesPage} />
+          <Route path="/article/:articleId" component={ArticlePage} />
+        </Switch>
       </Wrapper>
     </div>
   );

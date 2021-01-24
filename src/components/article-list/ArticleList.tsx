@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getArticles } from '../../shared/api';
-import { ArticleType } from '../../shared/types';
-import Article from './Article/Article';
+import { IArticle } from '../../shared/types';
+import Article from './article-item/ArticleItem';
 
 const StyledArticleList = styled.div`
   width: 70%;
@@ -10,8 +9,6 @@ const StyledArticleList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  /* background-color: #f6f6f6; */
 
   & > * {
     margin-top: 20px;
@@ -26,19 +23,11 @@ const StyledArticleListTitle = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-const ArticleList: React.FC = () => {
-  const [articles, setArticles] = useState<ArticleType[]>([]);
+type Props = {
+  articles: IArticle[];
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      getArticles()
-        .then((res) => setArticles(res.data))
-        .catch((err) => console.error(err));
-    };
-
-    fetchData();
-  }, []);
-
+const ArticleList: React.FC<Props> = ({ articles }) => {
   return (
     <StyledArticleList>
       <StyledArticleListTitle>Актуальное</StyledArticleListTitle>
