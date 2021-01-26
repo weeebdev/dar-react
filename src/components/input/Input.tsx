@@ -5,7 +5,7 @@ import styles from './Input.module.scss';
 type Props = {
   label: string;
   name: string;
-  type: 'text' | 'textarea';
+  type: 'text' | 'textarea' | 'password';
   value: string;
   onChange: (innerValue: string) => void;
   required?: boolean;

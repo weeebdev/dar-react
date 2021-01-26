@@ -1,0 +1,13 @@
+.header__profile {
+  display: flex;
+  align-items: center;
+
+  .header__profile__img {
+    height: 40px;
+    border-radius: 5rem;
+  }
+
+  .header__profile__title {
+    font-weight: 600;
+  }
+}

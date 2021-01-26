@@ -42,3 +42,10 @@ export interface IAuthor {
   created_at: string;
   updated_at: string;
 }
+
+export interface IProfile {
+  username: string;
+  firstname: string;
+  lastname: string;
+  avatar: string;
+}
