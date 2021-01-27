@@ -1,10 +1,21 @@
 .header__profile {
+  width: 70px;
+  height: 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
 
   .header__profile__img {
     height: 40px;
     border-radius: 5rem;
+  }
+
+  .header__profile__img__exit {
+    @extend .header__profile__img;
+
+    position: absolute;
   }
 
   .header__profile__title {

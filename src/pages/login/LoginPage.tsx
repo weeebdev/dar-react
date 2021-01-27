@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../components/button/Button';
 import Input from '../../components/input/Input';
 import AppContext, { ActionTypes } from '../../shared/app.context';
+import { saveProfile } from '../../shared/utils';
 import styles from './LoginPage.module.scss';
 
 type LoginPageInput = {
@@ -11,7 +12,10 @@ type LoginPageInput = {
 };
 
 const LoginPage: React.FC = () => {
-  const { dispatch } = useContext(AppContext);
+  const {
+    state: { profile },
+    dispatch,
+  } = useContext(AppContext);
 
   const [fields, setFields] = useState<LoginPageInput>({
     username: '',
@@ -19,6 +23,10 @@ const LoginPage: React.FC = () => {
   });
 
   const history = useHistory();
+
+  if (profile) {
+    history.push('/');
+  }
 
   const login = () => {
     if (fields.username && fields.password) {
@@ -31,7 +39,9 @@ const LoginPage: React.FC = () => {
 
       dispatch({ type: ActionTypes.SET_PROFILE, payload: mockUser });
 
-      history.replace('/');
+      saveProfile(mockUser);
+
+      history.goBack();
     }
   };
 

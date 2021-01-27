@@ -8,7 +8,7 @@ export enum ActionTypes {
 
 export interface AppAction {
   type: ActionTypes;
-  payload: any;
+  payload?: any;
 }
 
 export const reducer = (state: AppState, action: AppAction): AppState => {
@@ -32,12 +32,12 @@ export interface AppState {
   profile: IProfile | null;
 }
 
-export interface AppContext {
+export interface IAppContext {
   state: AppState;
   dispatch: (action: AppAction) => void;
 }
 
-const AppContext = createContext<AppContext>({
+const AppContext = createContext<IAppContext>({
   state: {
     profile: null,
   },

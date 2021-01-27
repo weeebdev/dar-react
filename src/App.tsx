@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 import './App.scss';
 import 'antd/dist/antd.css';
@@ -11,9 +11,10 @@ import ArticlesPage from './pages/articles/ArticlesPage';
 import ArticlePage from './pages/article/ArticlePage';
 import AppContext, { reducer } from './shared/app.context';
 import LoginPage from './pages/login/LoginPage';
+import { getProfile } from './shared/utils';
 
 const App: React.FC = () => {
-  const [state, dispatch] = useReducer(reducer, { profile: null });
+  const [state, dispatch] = useReducer(reducer, { profile: getProfile() });
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
