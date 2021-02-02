@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { getCategories } from '../../shared/api';
-import { ICategory } from '../../shared/types';
+import React, { useEffect } from 'react';
 
 import styles from './MainNav.module.scss';
 import MainNavItem, { StyledMainNavItemLink } from './main-nav-item/MainNavItem';
+import { selectCategories } from '../../shared/redux/categories/categories.selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from '../../shared/redux/categories/categories.actions';
 
 const MainNav = () => {
-  const [items, setItems] = useState<ICategory[]>([]);
+  const categories = useSelector(selectCategories);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCategories()
-      .then((res) => setItems(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
     <div className={styles.MainNav}>
@@ -21,7 +21,7 @@ const MainNav = () => {
           <li>
             <StyledMainNavItemLink to={'/articles'}>Все статьи</StyledMainNavItemLink>
           </li>
-          {items.map((item) => (
+          {categories.map((item) => (
             <MainNavItem {...item} key={item.id} />
           ))}
         </ul>

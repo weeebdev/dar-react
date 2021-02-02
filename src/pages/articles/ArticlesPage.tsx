@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ArticleList from '../../components/article-list/ArticleList';
-import { getArticles } from '../../shared/api';
-import { IArticle } from '../../shared/types';
+import { fetchArticles } from '../../shared/redux/articles/articles.actions';
+import { selectArticles } from '../../shared/redux/articles/articles.selectors';
 
 const StyledArticlesPage = styled.div``;
 
 const ArticlesPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
 
-  const [articles, setArticles] = useState<IArticle[]>([]);
+  const dispatch = useDispatch();
+  const articles = useSelector(selectArticles);
 
   useEffect(() => {
-    getArticles(categoryId)
-      .then((res) => setArticles(res.data))
-      .catch((err) => console.error(err));
-  }, [categoryId]);
+    dispatch(fetchArticles(categoryId));
+  }, [categoryId, dispatch]);
 
   return (
     <StyledArticlesPage>

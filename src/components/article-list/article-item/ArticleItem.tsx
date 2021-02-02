@@ -56,7 +56,7 @@ const Article: React.FC<IArticle> = ({ id, title, annotation, created_at, image 
   const date = new Date(created_at);
 
   return (
-    <Link to={`article/${id}`}>
+    <Link to={`/article/${id}`}>
       <StyledArticle>
         <StyledArticleDescription>
           <StyledArticleTitle>{title}</StyledArticleTitle>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CommentForm from '../../components/comment-form/CommentForm';
-import { getArticle } from '../../shared/api';
-import { IArticle } from '../../shared/types';
+import { fetchArticle } from '../../shared/redux/article/article.actions';
+import { selectArticle } from '../../shared/redux/article/article.selectors';
 
 const StyledArticlePage = styled.div``;
 
@@ -33,15 +34,14 @@ const StyledArticleAnnotation = styled.div`
 const ArticlePage: React.FC = () => {
   const { articleId } = useParams<{ articleId: string }>();
 
-  const [article, setArticle] = useState<IArticle | null>(null);
+  const dispatch = useDispatch();
+  const article = useSelector(selectArticle);
 
   useEffect(() => {
     if (articleId) {
-      getArticle(articleId)
-        .then((res) => setArticle(res.data))
-        .catch((err) => console.error(err));
+      dispatch(fetchArticle(articleId));
     }
-  }, [articleId]);
+  }, [articleId, dispatch]);
 
   return (
     <StyledArticlePage>
