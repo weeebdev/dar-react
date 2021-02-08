@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/button/Button';
 import Input from '../../components/input/Input';
+import { login } from '../../shared/api';
 import AppContext, { ActionTypes } from '../../shared/app.context';
-import { saveProfile } from '../../shared/utils';
+import { getProfile, saveProfile } from '../../shared/utils';
 import styles from './LoginPage.module.scss';
 
 type LoginPageInput = {
@@ -28,20 +29,17 @@ const LoginPage: React.FC = () => {
     history.push('/');
   }
 
-  const login = () => {
+  const handleLogin = () => {
     if (fields.username && fields.password) {
-      const mockUser = {
-        username: fields.username,
-        firstname: 'Adil',
-        lastname: 'Akhmetov',
-        avatar: 'https://avatars.githubusercontent.com/u/48881444?s=460&u=a2317274ce4b7c57e3c87e604e55595d65d02a2a&v=4',
-      };
-
-      dispatch({ type: ActionTypes.SET_PROFILE, payload: mockUser });
-
-      saveProfile(mockUser);
-
-      history.goBack();
+      login(fields.username, fields.password)
+        .then((res) => {
+          if (res.data.token) localStorage.setItem('authToken', res.data.token);
+          return getProfile();
+        })
+        .then((res) => {
+          dispatch({ type: ActionTypes.SET_PROFILE, payload: res });
+          history.goBack();
+        });
     }
   };
 
@@ -70,7 +68,7 @@ const LoginPage: React.FC = () => {
         required
         onChange={(innerValue) => fieldChange('password', innerValue)}
       />
-      <Button title={'Войти'} onClick={login} />
+      <Button title={'Войти'} onClick={handleLogin} />
     </div>
   );
 };

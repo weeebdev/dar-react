@@ -1,33 +1,52 @@
 import { IArticle } from '../../types';
+import {
+  ArticlesActionTypes,
+  FetchArticleAction,
+  FetchArticleErrorAction,
+  FetchArticlesAction,
+  FetchArticlesErrorAction,
+  FetchArticlesSuccessAction,
+  FetchArticleSuccessAction,
+} from './articles.types';
 
-export interface ArticlesAction<T> {
-  type: ArticlesActionTypes;
-  payload?: T;
-}
-
-export enum ArticlesActionTypes {
-  FETCH_ARTICLES = 'FETCH_ARTICLES',
-  FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS',
-  FETCH_ARTICLES_ERROR = 'FETCH_ARTICLES_ERROR',
-}
-
-export const fetchArticles = (categoryId: string): ArticlesAction<string> => {
+export const fetchArticles = (params: { categoryId: string }): FetchArticlesAction => {
   return {
     type: ArticlesActionTypes.FETCH_ARTICLES,
-    payload: categoryId,
+    payload: params,
   };
 };
 
-export const fetchArticlesSuccess = (Articles: IArticle[]): ArticlesAction<IArticle[]> => {
+export const fetchArticlesSuccess = (articles: IArticle[]): FetchArticlesSuccessAction => {
   return {
     type: ArticlesActionTypes.FETCH_ARTICLES_SUCCESS,
-    payload: Articles,
+    payload: articles,
   };
 };
 
-export const fetchArticlesError = (error: any): ArticlesAction<any> => {
+export const fetchArticlesError = (error: string): FetchArticlesErrorAction => {
   return {
     type: ArticlesActionTypes.FETCH_ARTICLES_ERROR,
+    payload: error,
+  };
+};
+
+export const fetchArticle = (params: { articleId: string }): FetchArticleAction => {
+  return {
+    type: ArticlesActionTypes.FETCH_ARTICLE,
+    payload: params,
+  };
+};
+
+export const fetchArticleSuccess = (article: IArticle): FetchArticleSuccessAction => {
+  return {
+    type: ArticlesActionTypes.FETCH_ARTICLE_SUCCESS,
+    payload: article,
+  };
+};
+
+export const fetchArticleError = (error: string): FetchArticleErrorAction => {
+  return {
+    type: ArticlesActionTypes.FETCH_ARTICLE_ERROR,
     payload: error,
   };
 };

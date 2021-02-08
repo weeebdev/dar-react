@@ -15,7 +15,7 @@ const ArticlesPage: React.FC = () => {
   const articles = useSelector(selectArticles);
 
   useEffect(() => {
-    dispatch(fetchArticles(categoryId));
+    dispatch(fetchArticles({ categoryId }));
   }, [categoryId, dispatch]);
 
   return (

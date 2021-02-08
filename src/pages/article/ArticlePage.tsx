@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CommentForm from '../../components/comment-form/CommentForm';
-import { fetchArticle } from '../../shared/redux/article/article.actions';
-import { selectArticle } from '../../shared/redux/article/article.selectors';
+import { fetchArticle } from '../../shared/redux/articles/articles.actions';
+import { selectArticle } from '../../shared/redux/articles/articles.selectors';
 
 const StyledArticlePage = styled.div``;
 
@@ -39,7 +39,7 @@ const ArticlePage: React.FC = () => {
 
   useEffect(() => {
     if (articleId) {
-      dispatch(fetchArticle(articleId));
+      dispatch(fetchArticle({ articleId }));
     }
   }, [articleId, dispatch]);
 
