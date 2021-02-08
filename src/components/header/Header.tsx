@@ -1,19 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import logo from '../../assets/images/logo.svg';
 import Button from '../button/Button';
 
 import styles from './Header.module.scss';
 import HeaderItems from './header-items/HeaderItems';
-import AppContext from '../../shared/app.context';
 import Profile from '../profile/Profile';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectProfile } from '../../shared/redux/auth/auth.selectors';
 
 const items = [''];
 
 const Header: React.FC = () => {
-  const {
-    state: { profile },
-  } = useContext(AppContext);
+  const profile = useSelector(selectProfile);
 
   const history = useHistory();
 

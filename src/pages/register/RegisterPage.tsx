@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Button from '../../components/button/Button';
 import Input from '../../components/input/Input';
-import { startLogin } from '../../shared/redux/auth/auth.actions';
+import { register } from '../../shared/redux/auth/auth.actions';
 import { selectProfile, selectLoading } from '../../shared/redux/auth/auth.selectors';
-import { ILogin } from '../../shared/types';
-import styles from './LoginPage.module.scss';
+import { IRegister } from '../../shared/types';
+import styles from './RegisterPage.module.scss';
 
-const LoginPage: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const profile = useSelector(selectProfile);
-  const loading = useSelector(selectLoading);
+  const loginLoading = useSelector(selectLoading);
 
-  const [fields, setFields] = useState<ILogin>({
+  const [fields, setFields] = useState<IRegister>({
     username: '',
     password: '',
+    firstname: '',
+    lastname: '',
+    avatar: '',
   });
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = () => {
     if (fields.username && fields.password) {
-      dispatch(startLogin(fields));
+      dispatch(register(fields));
     }
   };
 
@@ -39,7 +42,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.LoginPage}>
+    <div className={styles.RegisterPage}>
       <Input
         label={'username'}
         type={'text'}
@@ -56,16 +59,36 @@ const LoginPage: React.FC = () => {
         required
         onChange={(innerValue) => fieldChange('password', innerValue)}
       />
-      {!loading ? (
-        <Button title="Login" variant="primary" onClick={handleLogin} />
+      <Input
+        label={'firstname'}
+        type={'text'}
+        name={'firstname'}
+        value={fields.firstname}
+        required
+        onChange={(innerValue) => fieldChange('firstname', innerValue)}
+      />
+      <Input
+        label={'lastname'}
+        type={'text'}
+        name={'lastname'}
+        value={fields.lastname}
+        required
+        onChange={(innerValue) => fieldChange('lastname', innerValue)}
+      />
+      <Input
+        label={'avatar'}
+        type={'text'}
+        name={'avatar'}
+        value={fields.avatar}
+        onChange={(innerValue) => fieldChange('avatar', innerValue)}
+      />
+      {!loginLoading ? (
+        <Button title="Register" variant="primary" onClick={handleLogin} />
       ) : (
         <Button title="Loading" variant="ghost" />
       )}
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

@@ -49,3 +49,10 @@ export interface IProfile {
   lastname: string;
   avatar: string;
 }
+
+export interface ILogin {
+  username: string;
+  password: string;
+}
+
+export type IRegister = IProfile & ILogin;

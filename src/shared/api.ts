@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { IArticle, ICategory } from './types';
+import { IArticle, ICategory, ILogin, IProfile, IRegister } from './types';
 
 const API = 'https://media-api.dar-dev.zone/api';
-const BFF = 'http://localhost:3333';
+const BFF = process.env.BFF || 'http://localhost:3333';
 
 export const getCategories = () => {
   return axios.get<ICategory[]>(`${API}/categories`);
@@ -31,18 +31,19 @@ export const getArticles = (categoryId?: string) => {
   });
 };
 
-export const login = (username: string, password: string) => {
-  return axios.post(`${BFF}/auth/login`, {
-    username,
-    password,
-  });
+export const login = (data: ILogin) => {
+  return axios.post(`${BFF}/auth/login`, data);
 };
 
 export const getProfile = () => {
   const token = localStorage.getItem('authToken');
-  return axios.get(`${BFF}/auth/profile`, {
+  return axios.get<IProfile>(`${BFF}/auth/profile`, {
     headers: {
       Authorization: token,
     },
   });
+};
+
+export const register = (data: IRegister) => {
+  return axios.post(`${BFF}/auth/register`, data);
 };
